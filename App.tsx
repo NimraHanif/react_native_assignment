@@ -38,7 +38,8 @@ function AppContent() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 10,
+    marginTop:300
   },
 });
 
