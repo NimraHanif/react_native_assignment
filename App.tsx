@@ -1,12 +1,15 @@
 import React from 'react';
-import StackNavigator from './src/navigation/StackNavigator';
 import { NavigationContainer } from '@react-navigation/native';
+import StackNavigator from './src/navigation/StackNavigator';
+import { DataProvider } from './src/context/DataContext';
 
 function App() {
   return (
-    <NavigationContainer>
-      <StackNavigator />
-    </NavigationContainer>
+    <DataProvider>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
+    </DataProvider>
   );
 }
 

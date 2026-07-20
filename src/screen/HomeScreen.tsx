@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/types';
+import { View, Text, Button, StyleSheet, ActivityIndicator } from 'react-native';
+import {useData} from "../context/DataContext"
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+export default function HomeScreen({ navigation }: any) {
+  const {users, loading} = useData()
 
-export default function HomeScreen({ navigation }: Props) {
+  console.log("Data ferom user api\n\n", users)
   return (
     <View style={styles.container}>
+      <ActivityIndicator animating={loading} size={"large"} color={"red"} />
       <Text style={styles.title}>Home Screen</Text>
 
       <Button title="Go to Details" onPress={() => navigation.navigate('Details')} />
@@ -17,7 +18,13 @@ export default function HomeScreen({ navigation }: Props) {
       <View style={styles.spacer} />
 
       <Button title="Go to Users" onPress={() => navigation.navigate('Users')} />
+      <View style={styles.spacer} />
+
+      <Button title="Go to Test" onPress={() => navigation.navigate('Test')} />
+        <View style={styles.spacer} />
+        <Button title="Go to Login" onPress={() => navigation.navigate('Login')} />
     </View>
+    
   );
 }
 
